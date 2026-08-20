@@ -27,6 +27,7 @@ namespace APPR.coreproject
             using (var scope = app.Services.CreateScope())
             {
                 var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
                 string[] roles = { "Employee", "Donor" };
 
@@ -37,7 +38,21 @@ namespace APPR.coreproject
                         await roleManager.CreateAsync(new IdentityRole(role));
                     }
                 }
-            }
+                // Regestired the emails: employee@test.com & donor@test.com
+                var employee = await userManager.FindByEmailAsync("employee@test.com");
+
+                if (employee != null && !await userManager.IsInRoleAsync(employee, "Employee"))
+                {
+                    await userManager.AddToRoleAsync(employee, "Employee");
+                }
+
+                var donor = await userManager.FindByEmailAsync("donor@test.com");
+
+                if (donor != null && !await userManager.IsInRoleAsync(donor, "Donor"))
+                {
+                    await userManager.AddToRoleAsync(donor, "Donor");
+                }
+        }
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
