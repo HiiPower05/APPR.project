@@ -1,0 +1,72 @@
+﻿@page
+@model APPR.coreproject.Pages.Volunteer.IndexModel
+@{
+    ViewData["Title"] = "Volunteer";
+}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+
+            <h1>Volunteer</h1>
+
+            <p>Your contribution helps support our foundation.</p>
+            <form method="post">
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger">
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Volunteers.Name"
+                           class="form-label">
+                        Full Name
+                    </label>
+
+                    <input asp-for="Volunteers.Name"
+                           class="form-control" />
+
+                    <span asp-validation-for="Volunteers.Name"
+                          class="text-danger">
+                    </span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Volunteers.Skills"
+                           class="form-label">
+                        Skills
+                    </label>
+
+                    <input asp-for="Volunteers.Skills"
+                           class="form-control" />
+
+                    <span asp-validation-for="Volunteers.Skills"
+                          class="text-danger">
+                    </span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Volunteers.Availability"
+                           class="form-label">
+                        Availability
+                    </label>
+
+                    <input asp-for="Volunteers.Availability"
+                           class="form-control" />
+
+                    <span asp-validation-for="Volunteers.Availability"
+                          class="text-danger">
+                    </span>
+                </div>
+                <button type="submit"
+                        class="btn btn-primary">
+                    Submit
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

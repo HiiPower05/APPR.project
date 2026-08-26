@@ -11,7 +11,8 @@ namespace APPR.coreproject.Data
 
         {
         }
-        // tells entity FW where the model Donation is.
+        // tells entity FW where the model Donation & Volunteer is.
         public DbSet<Donation> Donations { get; set; }
+        public DbSet<Volunteers> Volunteer { get; set; }
     }
 }
