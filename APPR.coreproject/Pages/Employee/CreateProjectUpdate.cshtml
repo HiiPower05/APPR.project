@@ -1,0 +1,26 @@
+﻿@page
+@model APPR.coreproject.Pages.Employee.CreateProjectUpdateModel
+
+<h2>Create Project Update</h2>
+
+<form method="post">
+
+    <div>
+        <label asp-for="ProjectUpdate.Title"></label>
+        <input asp-for="ProjectUpdate.Title" />
+        <span asp-validation-for="ProjectUpdate.Title"></span>
+    </div>
+
+    <div>
+        <label asp-for="ProjectUpdate.Content"></label>
+        <textarea asp-for="ProjectUpdate.Content"></textarea>
+        <span asp-validation-for="ProjectUpdate.Content"></span>
+    </div>
+
+    <button type="submit">Post Update</button>
+
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,47 @@
+﻿@page
+@model APPR.coreproject.Pages.Employee.VolunteersModel
+
+@{
+    ViewData["Title"] = "Volunteer Submissions";
+}
+
+<div class="container mt-4">
+
+    <h1>Volunteer Submissions</h1>
+
+    @if (Model.VolunteerList.Any())
+    {
+        <div class="table-responsive">
+
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Name</th>
+                        <th>Skills</th>
+                        <th>Availability</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var volunteer in Model.VolunteerList)
+                    {
+                        <tr>
+                            <td>@volunteer.Name</td>
+                            <td>@volunteer.Skills</td>
+                            <td>@volunteer.Availability</td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">
+            No volunteer submissions have been received yet.
+        </div>
+    }
+
+</div>
