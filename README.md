@@ -130,8 +130,8 @@ Test Accounts
 For demonstration purposes, the application can be tested using the following accounts.
 
 Account	Role	Purpose
-employee@test.com	Employee	Test employee functionality
-donor@test.com	Donor	Test donor functionality
+employee@test.com	- Employee	Test employee functionality
+donor@test.com- Donor	Test donor functionality
 
 Replace these details with the actual test accounts used by the project if necessary. Do not commit real passwords or sensitive credentials to GitHub.
 
@@ -141,3 +141,18 @@ Screenshots demonstrating the application's functionality are included below.
 
 Home Page:
 <img width="1917" height="1016" alt="Screenshot 2026-08-28 180009" src="https://github.com/user-attachments/assets/785efd21-21b6-49e7-a95b-06306e1372ba" />
+
+
+Nav:
+<img width="1917" height="1020" alt="Screenshot 2026-08-28 180018" src="https://github.com/user-attachments/assets/bea4ab1e-ef95-43c8-827a-61d2c4a86869" />
+
+<img width="1917" height="1020" alt="Screenshot 2026-08-28 180024" src="https://github.com/user-attachments/assets/77d62b06-210a-4f52-9e4d-318c0abc41fa" />
+
+Login:
+<img width="1917" height="1018" alt="Screenshot 2026-08-28 180037" src="https://github.com/user-attachments/assets/9bd40a21-9b66-45e7-ba2f-7a7db887281d" />
+
+Register: 
+<img width="1917" height="911" alt="Screenshot 2026-08-28 180031" src="https://github.com/user-attachments/assets/34c6361a-1317-4961-ad68-2e50a9480545" />
+
+Employee Dashboard:
+<img width="1917" height="1018" alt="Screenshot 2026-08-28 180100" src="https://github.com/user-attachments/assets/98d1b179-2b64-4e5b-8bfa-09259733d241" />
