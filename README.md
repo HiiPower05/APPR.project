@@ -117,7 +117,7 @@ SQL Server / LocalDB
 ASP.NET and web development workload
 Running the Application
 Clone the repository.
-git clone [REPOSITORY-URL]
+git clone [https://github.com/HiiPower05/APPR.project.git]
 Open the .sln file in Visual Studio.
 Restore the NuGet packages.
 Check the database connection string in appsettings.json.
@@ -132,8 +132,6 @@ For demonstration purposes, the application can be tested using the following ac
 Account	Role	Purpose
 employee@test.com	- Employee	Test employee functionality
 donor@test.com- Donor	Test donor functionality
-
-Replace these details with the actual test accounts used by the project if necessary. Do not commit real passwords or sensitive credentials to GitHub.
 
 Screenshots
 
