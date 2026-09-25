@@ -237,3 +237,33 @@ Register:
 
 Employee Dashboard:
 <img width="1917" height="1018" alt="Screenshot 2026-08-28 180100" src="https://github.com/user-attachments/assets/98d1b179-2b64-4e5b-8bfa-09259733d241" />
+
+
+Part-2:Screenshots
+Section A-
+Successful Deployment & Live URL:
+<img width="1600" height="842" alt="Image 2026-09-25 at 17 45 50" src="https://github.com/user-attachments/assets/a11ef147-670f-4cc4-9556-b2165ffb3960" />
+
+<img width="1600" height="502" alt="Image 2026-09-25 at 17 45 50 (1)" src="https://github.com/user-attachments/assets/8da04356-aafb-4e92-92e7-674d4dcf9ca8" />
+
+
+Postman Test
+<img width="1600" height="672" alt="Image 2026-09-25 at 18 10 52" src="https://github.com/user-attachments/assets/ae07b84a-ba01-43b4-9a00-aa8527a0ebce" />
+
+
+
+Section D-
+Evidence of updated Visual Studio solution:
+
+<img width="873" height="602" alt="image" src="https://github.com/user-attachments/assets/1e008ae7-a4eb-43e7-9b76-cf61d7f27892" />
+
+<img width="1902" height="821" alt="image" src="https://github.com/user-attachments/assets/a1b462b0-ce4c-4c6c-8e21-c0cb94dcb6f1" />
+
+<img width="952" height="231" alt="image" src="https://github.com/user-attachments/assets/73fbbaa3-e045-4c96-a19b-80f62ed71ec1" />
+
+<img width="1881" height="382" alt="image" src="https://github.com/user-attachments/assets/8f6eb497-65c9-4724-a389-23863a0ee803" />
+
+<img width="660" height="223" alt="image" src="https://github.com/user-attachments/assets/e49b3eaf-bd5d-4437-92e8-b62b79a05bbf" />
+
+<img width="1590" height="900" alt="image" src="https://github.com/user-attachments/assets/0503a6fb-8ee0-4db3-968e-24ac4a2b81a1" />
+
