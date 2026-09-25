@@ -130,8 +130,13 @@ Test Accounts
 For demonstration purposes, the application can be tested using the following accounts.
 
 Account	Role	Purpose
-employee@test.com	- Employee	Test employee functionality
-donor@test.com- Donor	Test donor functionality
+Employee
+Email: employee@test.com
+Password: Employee123!
+
+Donor
+Email: donor@test.com
+Password: Donor123!
 
 TEST ACCOUNT:
 testuser@test.com
