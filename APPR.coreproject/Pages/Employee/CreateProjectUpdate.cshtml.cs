@@ -31,12 +31,14 @@ namespace APPR.coreproject.Pages.Employee
                 return Page();
             }
 
-            ProjectUpdate.DatePosted = DateTime.Now;
+            ProjectUpdate.DatePosted = DateTime.UtcNow;
 
             // _context lets us access and save our data.
             _context.ProjectUpdate.Add(ProjectUpdate);
             // saves.
             await _context.SaveChangesAsync();
+            // Sets a temp success message
+            TempData["SuccessMessage"] = "Project update posted successfully!";
 
             return RedirectToPage();
         }
