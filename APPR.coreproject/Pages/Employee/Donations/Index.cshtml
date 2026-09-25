@@ -1,0 +1,109 @@
+﻿@page
+@model APPR.coreproject.Pages.Employee.Donations.IndexModel
+
+@{
+    ViewData["Title"] = "Donation Transactions";
+}
+
+<div class="container mt-4">
+
+    ```
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1>Donation Transactions</h1>
+            <p class="text-muted">
+                View recorded donation transactions.
+            </p>
+        </div>
+
+        <a asp-page="/Employee/Index" class="btn btn-outline-secondary">
+            Back to Dashboard
+        </a>
+    </div>
+
+    @if (Model.Donations.Count == 0)
+    {
+        <div class="alert alert-info">
+            No donation transactions have been recorded yet.
+        </div>
+    }
+    else
+    {
+        <div class="card shadow-sm">
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <table class="table table-striped table-hover align-middle">
+
+                        <thead>
+                            <tr>
+                                <th>Transaction</th>
+                                <th>Donor</th>
+                                <th>Email</th>
+                                <th>Amount</th>
+                                <th>Type</th>
+                                <th>Date</th>
+                                <th>Tax Certificate</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var donation in Model.Donations)
+                            {
+                                <tr>
+                                    <td>
+                                        <strong>
+                                            @donation.TransactionReference
+                                        </strong>
+                                    </td>
+
+                                    <td>
+                                        @donation.DonorName
+                                    </td>
+
+                                    <td>
+                                        @donation.DonorEmail
+                                    </td>
+
+                                    <td>
+                                        @donation.Currency
+                                        @donation.Amount.ToString("N2")
+                                    </td>
+
+                                    <td>
+                                        @donation.DonationType
+                                    </td>
+
+                                    <td>
+                                        @donation.DonationDate
+                                        .ToString("dd MMM yyyy HH:mm")
+                                    </td>
+
+                                    <td>
+                                        @if (!string.IsNullOrWhiteSpace(
+                                            donation.TransactionReference))
+                                        {
+                                            <span class="badge bg-success">
+                                                TAX-@donation.TransactionReference
+                                            </span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-secondary">
+                                                Not generated
+                                            </span>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    }
+    ```
+
+</div>
