@@ -37,15 +37,18 @@
                             <a class="nav-link" asp-page="/Donate/Index">Donate</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="/Updates">
+                                Relief Updates
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" asp-page="/About">About</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-page="/Contact">Contact</a>
                         </li>
 
-                        @if (User.Identity?.IsAuthenticated == true)
-                        {
-                            @if (User.IsInRole("Employee"))
+                        @if (User.IsInRole("Employee"))
                             {
                                 <li class="nav-item">
                                     <a class="nav-link" href="/Employee">
@@ -53,7 +56,6 @@
                                     </a>
                                 </li>
                             }
-                        }
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>

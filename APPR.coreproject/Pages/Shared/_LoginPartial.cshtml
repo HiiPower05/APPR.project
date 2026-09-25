@@ -9,9 +9,9 @@
     @if (User.IsInRole("Employee"))
     {
         <li class="nav-item">
-            <a class="nav-link text-dark" asp-page="/Employee/Index">
-                Employee Dashboard
-            </a>
+            <a class="nav-link text-dark" asp-page="/Account/Manage/Index" 
+            title="Manage"> 
+        </a> 
         </li>
     }
 

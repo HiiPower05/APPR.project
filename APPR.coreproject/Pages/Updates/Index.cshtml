@@ -1,0 +1,56 @@
+﻿@page
+@model APPR.coreproject.Pages.Updates.IndexModel
+
+@{
+    ViewData["Title"] = "Relief Project Updates";
+}
+
+<div class="container mt-4">
+
+    <div class="text-center mb-4">
+        <h1>Relief Project Updates</h1>
+        <p class="text-muted">
+            Follow the latest updates from our relief projects.
+        </p>
+    </div>
+
+    @if (Model.Updates.Count == 0)
+    {
+        <div class="alert alert-info">
+            There are currently no project updates available.
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var update in Model.Updates)
+            {
+                <div class="col-md-8 mx-auto mb-4">
+
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+
+                            <h2 class="h4">
+                                @update.Title
+                            </h2>
+
+                            <p class="text-muted">
+                                Posted
+                                @update.DatePosted.ToString("dd MMMM yyyy HH:mm")
+                            </p>
+
+                            <hr />
+
+                            <p>
+                                @update.Content
+                            </p>
+
+                        </div>
+                    </div>
+
+                </div>
+            }
+        </div>
+    }
+
+</div>
