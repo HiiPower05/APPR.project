@@ -49,7 +49,8 @@ namespace APPR.coreproject
 
             var app = builder.Build();
 
-            // Creates Identity roles when the application runs
+            // Optional test-account seeding
+            // Optional test-account seeding
             using (var scope = app.Services.CreateScope())
             {
                 var roleManager = scope.ServiceProvider
@@ -58,6 +59,7 @@ namespace APPR.coreproject
                 var userManager = scope.ServiceProvider
                     .GetRequiredService<UserManager<ApplicationUser>>();
 
+                // Create roles if they do not already exist
                 string[] roles = { "Employee", "Donor" };
 
                 foreach (var role in roles)
@@ -68,22 +70,88 @@ namespace APPR.coreproject
                     }
                 }
 
-                // Assign Employee role
-                var employee = await userManager.FindByEmailAsync("employee@test.com");
+                var employeeEmail =
+                    builder.Configuration["TestAccounts:Employee:Email"];
 
-                if (employee != null &&
-                    !await userManager.IsInRoleAsync(employee, "Employee"))
+                var employeePassword =
+                    builder.Configuration["TestAccounts:Employee:Password"];
+
+                var donorEmail =
+                    builder.Configuration["TestAccounts:Donor:Email"];
+
+                var donorPassword =
+                    builder.Configuration["TestAccounts:Donor:Password"];
+
+                // Create Employee test account if configured
+                if (!string.IsNullOrWhiteSpace(employeeEmail) &&
+                    !string.IsNullOrWhiteSpace(employeePassword))
                 {
-                    await userManager.AddToRoleAsync(employee, "Employee");
+                    var employee = await userManager.FindByEmailAsync(employeeEmail);
+
+                    if (employee == null)
+                    {
+                        employee = new ApplicationUser
+                        {
+                            UserName = employeeEmail,
+                            Email = employeeEmail,
+                            EmailConfirmed = true
+                        };
+
+                        var result = await userManager.CreateAsync(
+                            employee,
+                            employeePassword);
+
+                        if (!result.Succeeded)
+                        {
+                            foreach (var error in result.Errors)
+                            {
+                                Console.WriteLine(
+                                    $"Employee test account creation error: {error.Description}");
+                            }
+                        }
+                    }
+
+                    if (employee != null &&
+                        !await userManager.IsInRoleAsync(employee, "Employee"))
+                    {
+                        await userManager.AddToRoleAsync(employee, "Employee");
+                    }
                 }
 
-                // Assign Donor role
-                var donor = await userManager.FindByEmailAsync("donor@test.com");
-
-                if (donor != null &&
-                    !await userManager.IsInRoleAsync(donor, "Donor"))
+                // Create Donor test account if configured
+                if (!string.IsNullOrWhiteSpace(donorEmail) &&
+                    !string.IsNullOrWhiteSpace(donorPassword))
                 {
-                    await userManager.AddToRoleAsync(donor, "Donor");
+                    var donor = await userManager.FindByEmailAsync(donorEmail);
+
+                    if (donor == null)
+                    {
+                        donor = new ApplicationUser
+                        {
+                            UserName = donorEmail,
+                            Email = donorEmail,
+                            EmailConfirmed = true
+                        };
+
+                        var result = await userManager.CreateAsync(
+                            donor,
+                            donorPassword);
+
+                        if (!result.Succeeded)
+                        {
+                            foreach (var error in result.Errors)
+                            {
+                                Console.WriteLine(
+                                    $"Donor test account creation error: {error.Description}");
+                            }
+                        }
+                    }
+
+                    if (donor != null &&
+                        !await userManager.IsInRoleAsync(donor, "Donor"))
+                    {
+                        await userManager.AddToRoleAsync(donor, "Donor");
+                    }
                 }
             }
 
