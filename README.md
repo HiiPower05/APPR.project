@@ -267,3 +267,9 @@ Evidence of updated Visual Studio solution:
 
 <img width="1590" height="900" alt="image" src="https://github.com/user-attachments/assets/0503a6fb-8ee0-4db3-968e-24ac4a2b81a1" />
 
+<img width="1332" height="585" alt="Screenshot 2026-09-25 222359" src="https://github.com/user-attachments/assets/0aa40f50-13cd-408c-8b92-0d0db6b43f4f" />
+<img width="980" height="395" alt="image" src="https://github.com/user-attachments/assets/80d02f81-2c89-4247-b985-ea87e7493e29" />
+<img width="799" height="332" alt="Screenshot 2026-09-25 231647" src="https://github.com/user-attachments/assets/dcb8e13d-da51-4e14-8804-e0d377c51ba1" />
+<img width="797" height="578" alt="Screenshot 2026-09-25 231626" src="https://github.com/user-attachments/assets/0252b3ca-49c9-4445-81a6-3685d1416b4e" />
+<img width="855" height="615" alt="Screenshot 2026-09-25 231553" src="https://github.com/user-attachments/assets/09cc6206-89df-46d6-bbd5-8e3d1a1a16c4" />
+https://giftapp-awa5evh3hng9c7ck.southafricanorth-01.azurewebsites.net
