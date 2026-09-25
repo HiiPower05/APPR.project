@@ -142,6 +142,9 @@ TEST ACCOUNT:
 testuser@test.com
 TestUser1!
 
+Email: testdonor@example.com
+Password: TestDonor123!
+
 Screenshots
 
 Screenshots demonstrating the application's functionality are included below.
