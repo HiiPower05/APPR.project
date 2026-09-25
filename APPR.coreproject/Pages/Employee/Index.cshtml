@@ -1,13 +1,15 @@
 ﻿@page
 @model APPR.coreproject.Pages.Employee.IndexModel
-
-<h1>Employee Dashboard</h1>
-
-<p>Only employees should be able to see this page.</p>
-
-<a asp-page="/Employee/Volunteers"
-   class="btn btn-primary">
-    View Volunteer Submissions
-</a>
 @{
+    ViewData["Title"] = "Employee Dashboard";
 }
+
+<div class="container">
+    <h1>Employee Dashboard</h1>
+
+    <p>Welcome to the Employee Dashboard.</p>
+
+    <a href="/Employee/Volunteer" class="btn btn-primary">
+        View Volunteer Applications
+    </a>
+</div>

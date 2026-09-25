@@ -10,24 +10,53 @@ namespace APPR.coreproject
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+            // Database connection
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+                ?? throw new InvalidOperationException(
+                    "Connection string 'DefaultConnection' not found.");
+
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(connectionString));
+
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                // Two roles to be added
-                .AddRoles<IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            // Strengthened ASP.NET Identity configuration
+            builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
+            {
+                // Sign-in settings
+                options.SignIn.RequireConfirmedAccount = true;
+                options.SignIn.RequireConfirmedEmail = true;
+
+                // Password requirements
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequiredLength = 8;
+
+                // Account lockout
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.AllowedForNewUsers = true;
+
+                // User settings
+                options.User.RequireUniqueEmail = true;
+            })
+            .AddRoles<IdentityRole>()
+            .AddEntityFrameworkStores<ApplicationDbContext>();
+
             builder.Services.AddRazorPages();
 
             var app = builder.Build();
-            // Creates Identities: Employee and Donor - when application runs.
+
+            // Creates Identity roles when the application runs
             using (var scope = app.Services.CreateScope())
             {
-                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
+                var roleManager = scope.ServiceProvider
+                    .GetRequiredService<RoleManager<IdentityRole>>();
+
+                var userManager = scope.ServiceProvider
+                    .GetRequiredService<UserManager<ApplicationUser>>();
 
                 string[] roles = { "Employee", "Donor" };
 
@@ -38,23 +67,28 @@ namespace APPR.coreproject
                         await roleManager.CreateAsync(new IdentityRole(role));
                     }
                 }
-                // Regestired the emails: employee@test.com & donor@test.com
+
+                // Assign Employee role
                 var employee = await userManager.FindByEmailAsync("employee@test.com");
 
-                if (employee != null && !await userManager.IsInRoleAsync(employee, "Employee"))
+                if (employee != null &&
+                    !await userManager.IsInRoleAsync(employee, "Employee"))
                 {
                     await userManager.AddToRoleAsync(employee, "Employee");
                 }
 
+                // Assign Donor role
                 var donor = await userManager.FindByEmailAsync("donor@test.com");
 
-                if (donor != null && !await userManager.IsInRoleAsync(donor, "Donor"))
+                if (donor != null &&
+                    !await userManager.IsInRoleAsync(donor, "Donor"))
                 {
                     await userManager.AddToRoleAsync(donor, "Donor");
                 }
-        }
+            }
 
-            // Configure the HTTP request pipeline.
+
+            // Configure the HTTP request pipeline
             if (app.Environment.IsDevelopment())
             {
                 app.UseMigrationsEndPoint();
@@ -62,7 +96,6 @@ namespace APPR.coreproject
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -70,9 +103,12 @@ namespace APPR.coreproject
 
             app.UseRouting();
 
+            // Authentication must come before authorization
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.MapStaticAssets();
+
             app.MapRazorPages()
                .WithStaticAssets();
 
