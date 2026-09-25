@@ -1,4 +1,7 @@
-Overview
+# APPR.coreproject
+
+<details>
+<summary><strong>Overview</strong></summary>
 
 This project is an ASP.NET Core Razor Pages web application developed as a prototype for a foundation/relief organisation.
 
@@ -6,75 +9,106 @@ The application provides information about the foundation, allows users to make 
 
 The project was developed using ASP.NET Core and Bootstrap, with ASP.NET Core Identity providing authentication and role-based authorization.
 
-Technologies Used
-  ASP.NET Core 9.0
-  Razor Pages
-  C#
-  ASP.NET Core Identity
-  Entity Framework Core
-  SQL Server
-  Bootstrap
-  HTML/CSS
-  Git/GitHub
-  Azure App Service for deployment
-Features
-  Public Website
-  Foundation-branded header and navigation
-  Home page
-  About page
-  Donation page
-  Volunteer registration page
-  Contact page
-  Responsive Bootstrap layout
-Authentication and Roles
+</details>
+
+<details>
+<summary><strong>Technologies Used</strong></summary>
+
+* ASP.NET Core 9.0
+* Razor Pages
+* C#
+* ASP.NET Core Identity
+* Entity Framework Core
+* SQL Server
+* Bootstrap
+* HTML/CSS
+* Git/GitHub
+* Azure App Service for deployment
+
+</details>
+
+<details>
+<summary><strong>Features</strong></summary>
+
+### Public Website
+
+* Foundation-branded header and navigation
+* Home page
+* About page
+* Donation page
+* Volunteer registration page
+* Contact page
+* Responsive Bootstrap layout
+
+</details>
+
+<details>
+<summary><strong>Authentication and Roles</strong></summary>
 
 The application uses ASP.NET Core Identity for authentication.
 
 There are two roles:
 
-Employee
-  Access to employee functionality
-  Can post updates about ongoing relief projects
-  Can view volunteer registrations
-Donor
-  Can register and log in
-  Can make donations
+### Employee
+
+* Access to employee functionality
+* Can post updates about ongoing relief projects
+* Can view volunteer registrations
+
+### Donor
+
+* Can register and log in
+* Can make donations
 
 Users can also make donations as anonymous guests without creating an account.
 
-Donations
+</details>
+
+<details>
+<summary><strong>Donations</strong></summary>
 
 The donation system supports:
 
-  One-time donations
-  Recurring donations
-  ZAR currency
-  USD currency
-  EUR currency
-  Symbolic prototype donation values
-  Anonymous donations
-  Donation records stored in the database
-  Placeholder tax certificate displayed after a donation
+* One-time donations
+* Recurring donations
+* ZAR currency
+* USD currency
+* EUR currency
+* Symbolic prototype donation values
+* Anonymous donations
+* Donation records stored in the database
+* Placeholder tax certificate displayed after a donation
 
 No real financial transactions are processed by this prototype.
 
-Volunteer Registration
+</details>
+
+<details>
+<summary><strong>Volunteer Registration</strong></summary>
 
 Visitors can register their interest in volunteering by providing:
 
-Name
-Skills
-Availability
+* Name
+* Skills
+* Availability
 
 Volunteer submissions are stored by the application and can be viewed by employees.
 
-Relief Project Updates
+</details>
+
+<details>
+<summary><strong>Relief Project Updates</strong></summary>
 
 Employees can post updates relating to ongoing relief projects.
 
 Public users can view the project updates through the website.
 
-Project Structure
+</details>
+
+<details>
+<summary><strong>Project Structure</strong></summary>
+
+```text
 APPR.coreproject/
 │
 ├── Areas/
@@ -106,48 +140,85 @@ APPR.coreproject/
 ├── Program.cs
 ├── appsettings.json
 └── APPR.coreproject.csproj
-Getting Started
-Prerequisites
+```
+
+</details>
+
+<details>
+<summary><strong>Getting Started</strong></summary>
+
+### Prerequisites
 
 To run the project locally, install:
 
-Visual Studio 2022
-.NET 9 SDK
-SQL Server / LocalDB
-ASP.NET and web development workload
-Running the Application
-Clone the repository.
+* Visual Studio 2022
+* .NET 9 SDK
+* SQL Server / LocalDB
+* ASP.NET and web development workload
+
+### Running the Application
+
+1. Clone the repository.
+
+```bash
 git clone [https://github.com/HiiPower05/APPR.project.git]
-Open the .sln file in Visual Studio.
-Restore the NuGet packages.
-Check the database connection string in appsettings.json.
-Apply the Entity Framework migrations using the Package Manager Console:
+```
+
+2. Open the `.sln` file in Visual Studio.
+
+3. Restore the NuGet packages.
+
+4. Check the database connection string in `appsettings.json`.
+
+5. Apply the Entity Framework migrations using the Package Manager Console:
+
+```powershell
 Update-Database
-Run the application from Visual Studio.
-Register or use the provided test accounts to test the different roles.
-Test Accounts
+```
+
+6. Run the application from Visual Studio.
+
+7. Register or use the provided test accounts to test the different roles.
+
+</details>
+
+<details>
+<summary><strong>Test Accounts</strong></summary>
 
 For demonstration purposes, the application can be tested using the following accounts.
 
-Account	Role	Purpose
-Employee
-Email: employee@test.com
-Password: Employee123!
+### Employee
 
-Donor
-Email: donor@test.com
-Password: Donor123!
+**Role:** Employee
+**Purpose:** Employee functionality
 
-TEST ACCOUNT:
-testuser@test.com
-TestUser1!
+**Email:** [employee@test.com](mailto:employee@test.com)
+**Password:** `Employee123!`
 
-Email: testdonor@example.com
-Password: TestDonor123!
+### Donor
 
-Screenshots
+**Email:** [donor@test.com](mailto:donor@test.com)
+**Password:** `Donor123!`
+
+### TEST ACCOUNT
+
+[testuser@test.com](mailto:testuser@test.com)
+**Password:** `TestUser1!`
+
+### Test Donor
+
+**Email:** [testdonor@example.com](mailto:testdonor@example.com)
+**Password:** `TestDonor123!`
+
+</details>
+
+<details>
+<summary><strong>Screenshots</strong></summary>
 
 Screenshots demonstrating the application's functionality are included below.
+
+</details>
+
 
 Home Page:
 <img width="1917" height="1016" alt="Screenshot 2026-08-28 180009" src="https://github.com/user-attachments/assets/785efd21-21b6-49e7-a95b-06306e1372ba" />
