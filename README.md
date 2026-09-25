@@ -133,6 +133,10 @@ Account	Role	Purpose
 employee@test.com	- Employee	Test employee functionality
 donor@test.com- Donor	Test donor functionality
 
+TEST ACCOUNT:
+testuser@test.com
+TestUser1!
+
 Screenshots
 
 Screenshots demonstrating the application's functionality are included below.
