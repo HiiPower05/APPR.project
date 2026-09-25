@@ -1,0 +1,103 @@
+﻿@page
+@model APPR.coreproject.Pages.Donate.ConfirmationModel
+
+@{
+    ViewData["Title"] = "Donation Confirmation";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+
+                    <h1 class="text-success mb-3">
+                        Donation Confirmed
+                    </h1>
+
+                    <p class="lead">
+                        Thank you for your contribution,
+                        @Model.Donation!.DonorName.
+                    </p>
+
+                    <p>
+                        Your donation has been successfully recorded.
+                    </p>
+
+                    <hr />
+
+                    <div class="text-start">
+
+                        <p>
+                            <strong>Transaction Reference:</strong>
+                            @Model.Donation.TransactionReference
+                        </p>
+
+                        @if (!string.IsNullOrWhiteSpace(Model.CertificateNumber))
+                        {
+                            <p>
+                                <strong>Tax Certificate:</strong>
+                                @Model.CertificateNumber
+                            </p>
+                        }
+                        else
+                        {
+                            <p class="text-warning">
+                                <strong>Tax Certificate:</strong>
+                                Certificate generation was unavailable.
+                                Your donation was still recorded successfully.
+                            </p>
+                        }
+
+                        <p>
+                            <strong>Amount:</strong>
+                            @Model.Donation.Currency
+                            @Model.Donation.Amount.ToString("N2")
+                        </p>
+
+                        <p>
+                            <strong>Donation Type:</strong>
+                            @Model.Donation.DonationType
+                        </p>
+
+                        <p>
+                            <strong>Donor:</strong>
+                            @Model.Donation.DonorName
+                        </p>
+
+                        <p>
+                            <strong>Email:</strong>
+                            @Model.Donation.DonorEmail
+                        </p>
+
+                        <p>
+                            <strong>Date:</strong>
+                            @Model.Donation.DonationDate.ToString("dd MMMM yyyy HH:mm")
+                        </p>
+
+                    </div>
+
+                    <hr />
+
+                    <p class="text-muted">
+                        Please keep your transaction reference and tax
+                        certificate number for your records.
+                    </p>
+
+                    <a asp-page="/Index"
+                       class="btn btn-primary">
+                        Return to Home
+                    </a>
+
+                    <a asp-page="/Donate/Index"
+                       class="btn btn-outline-secondary">
+                        Make Another Donation
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

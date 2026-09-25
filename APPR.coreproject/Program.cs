@@ -46,6 +46,8 @@ namespace APPR.coreproject
             .AddEntityFrameworkStores<ApplicationDbContext>();
 
             builder.Services.AddRazorPages();
+            // added for certificate
+            builder.Services.AddHttpClient();
 
             var app = builder.Build();
 

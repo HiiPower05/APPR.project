@@ -26,5 +26,10 @@ namespace APPR.coreproject.Models
         public string DonorEmail { get; set; } = string.Empty;
 
         public DateTime DonationDate { get; set; }
+
+        // Change. reference to identify donation transaction.
+  
+        [StringLength(50)]
+        public string TransactionReference { get; set; } = string.Empty;
     }
 }

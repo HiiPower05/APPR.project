@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="APPR.coreproject/APPR.coreproject.csproj" />
+  <Project Path="Functions/Functions.csproj" />
 </Solution>
