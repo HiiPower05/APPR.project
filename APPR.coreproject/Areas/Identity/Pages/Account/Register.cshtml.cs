@@ -116,12 +116,25 @@ public class RegisterModel : PageModel
 
             await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
             await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+
             var result = await _userManager.CreateAsync(user, Input.Password);
 
             if (result.Succeeded)
             {
-                _logger.LogInformation("User created a new account with password.");
+                // Automatically assign every new registered user the Donor role
+                var roleResult = await _userManager.AddToRoleAsync(user, "Donor");
 
+                if (!roleResult.Succeeded)
+                {
+                    foreach (var error in roleResult.Errors)
+                    {
+                        _logger.LogError(
+                            "Failed to assign Donor role to new user: {Error}",
+                            error.Description);
+                    }
+                }
+
+                _logger.LogInformation("User created a new account with password and was assigned the Donor role.");
                 var userId = await _userManager.GetUserIdAsync(user);
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
