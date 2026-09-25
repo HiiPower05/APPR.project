@@ -4,6 +4,7 @@ using APPR.coreproject.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using GiftOfTheGivers.Helpers;
 
 namespace APPR.coreproject.Pages.Donate
 {
@@ -35,6 +36,9 @@ namespace APPR.coreproject.Pages.Donate
                 return Page();
             }
 
+            decimal calculatedAmount =
+    DonationCalculator.CalculateTotal(new[] { Donation.Amount });
+
             Donation.DonationDate = DateTime.Now;
 
             // Generate a unique transaction reference.
@@ -53,7 +57,7 @@ namespace APPR.coreproject.Pages.Donate
                 transactionReference = Donation.TransactionReference,
                 donorName = Donation.DonorName,
                 donorEmail = Donation.DonorEmail,
-                amount = Donation.Amount,
+                amount = calculatedAmount,
                 currency = Donation.Currency,
                 donationType = Donation.DonationType
             };
