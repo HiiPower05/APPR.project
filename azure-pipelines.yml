@@ -30,31 +30,31 @@ steps:
       projects: 'APPR.coreproject.slnx'
       arguments: '--configuration $(buildConfiguration) --no-restore'
 
-    - task: PowerShell@2
-      displayName: 'Start ASP.NET Core application'
-      inputs:
-        targetType: 'inline'
-        script: |
-          $appPath = "$(Build.SourcesDirectory)\APPR.coreproject\bin\Release\net9.0\APPR.coreproject.dll"
+  - task: PowerShell@2
+    displayName: 'Start ASP.NET Core application'
+    inputs:
+      targetType: 'inline'
+      script: |
+        $appPath = "$(Build.SourcesDirectory)\APPR.coreproject\bin\Release\net9.0\APPR.coreproject.dll"
 
-          Start-Process dotnet -ArgumentList "`"$appPath`" --urls http://localhost:7090" -PassThru
+        $process = Start-Process dotnet -ArgumentList "`"$appPath`" --urls http://localhost:7090" -PassThru
 
-          $ready = $false
+        $ready = $false
 
-          for ($i = 0; $i -lt 30; $i++) {
-              try {
-                  Invoke-WebRequest http://localhost:7090 -UseBasicParsing -TimeoutSec 2 | Out-Null
-                  $ready = $true
-                  break
-              }
-              catch {
-                  Start-Sleep -Seconds 2
-              }
+        for ($i = 0; $i -lt 30; $i++) {
+          try {
+            Invoke-WebRequest http://localhost:7090 -UseBasicParsing -TimeoutSec 2 | Out-Null
+            $ready = $true
+            break
           }
-
-          if (-not $ready) {
-              throw "ASP.NET Core application did not start."
+          catch {
+            Start-Sleep -Seconds 2
           }
+        }
+
+        if (-not $ready) {
+          throw "ASP.NET Core application did not start."
+        }
 
   - task: DotNetCoreCLI@2
     displayName: 'Run unit tests'
