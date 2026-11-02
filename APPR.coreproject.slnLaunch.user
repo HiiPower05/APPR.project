@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "APPR.coreproject.Tests\\APPR.coreproject.Tests.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "APPR.coreproject\\APPR.coreproject.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
