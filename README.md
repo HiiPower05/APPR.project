@@ -219,7 +219,13 @@ Screenshots demonstrating the application's functionality are included below.
 
 </details>
 
+### Functions Deployment
+<img width="1072" height="823" alt="Screenshot 2026-11-02 223939" src="https://github.com/user-attachments/assets/be3d6736-30f6-49af-8010-75c72a744899" />
+<img width="1443" height="897" alt="Screenshot 2026-11-02 224018" src="https://github.com/user-attachments/assets/45cfa284-4a62-412f-8625-ed6fd7854bbb" />
+<img width="1916" height="817" alt="Screenshot 2026-11-02 223653" src="https://github.com/user-attachments/assets/fb407bf2-f9f1-4430-b249-f8931925b83f" />
 
+
+### Website
 Home Page:
 <img width="1917" height="1016" alt="Screenshot 2026-08-28 180009" src="https://github.com/user-attachments/assets/785efd21-21b6-49e7-a95b-06306e1372ba" />
 
