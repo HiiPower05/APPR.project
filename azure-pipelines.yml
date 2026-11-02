@@ -11,21 +11,18 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-  # Install .NET 9
   - task: UseDotNet@2
     displayName: 'Install .NET 9 SDK'
     inputs:
       packageType: 'sdk'
       version: '9.x'
 
-  # Restore all solution dependencies
   - task: DotNetCoreCLI@2
     displayName: 'Restore dependencies'
     inputs:
       command: 'restore'
       projects: 'APPR.coreproject.slnx'
 
-  # Build the entire solution
   - task: DotNetCoreCLI@2
     displayName: 'Build solution'
     inputs:
@@ -33,21 +30,10 @@ steps:
       projects: 'APPR.coreproject.slnx'
       arguments: '--configuration $(buildConfiguration) --no-restore'
 
-  # Run the xUnit test project
   - task: DotNetCoreCLI@2
     displayName: 'Run unit tests'
     inputs:
       command: 'test'
       projects: 'APPR.coreproject.Tests/APPR.coreproject.Tests.csproj'
-      arguments: '--configuration $(buildConfiguration) --no-build --no-restore --logger trx --results-directory $(Agent.TempDirectory)/TestResults'
-
-  # Publish test results to Azure DevOps
-  - task: PublishTestResults@2
-    displayName: 'Publish test results'
-    condition: succeededOrFailed()
-    inputs:
-      testResultsFormat: 'VSTest'
-      testResultsFiles: '**/*.trx'
-      searchFolder: '$(Agent.TempDirectory)/TestResults'
-      failTaskOnFailedTests: true
-      failTaskOnMissingResultsFile: true
+      arguments: '--configuration $(buildConfiguration) --no-build --no-restore'
+      publishTestResults: true
