@@ -29,32 +29,57 @@ steps:
       command: 'build'
       projects: 'APPR.coreproject.slnx'
       arguments: '--configuration $(buildConfiguration) --no-restore'
-
+ 
   - task: PowerShell@2
     displayName: 'Start ASP.NET Core application'
     inputs:
       targetType: 'inline'
       script: |
         $appPath = "$(Build.SourcesDirectory)\APPR.coreproject\bin\Release\net9.0\APPR.coreproject.dll"
+        $stdout = "$(Agent.TempDirectory)\app-output.log"
+        $stderr = "$(Agent.TempDirectory)\app-error.log"
 
-        $process = Start-Process dotnet -ArgumentList "`"$appPath`" --urls http://localhost:7090" -PassThru
+        if (-not (Test-Path $appPath)) {
+          throw "Application DLL not found: $appPath"
+        }
+
+        $process = Start-Process -FilePath "dotnet" `
+          -ArgumentList "`"$appPath`" --urls http://127.0.0.1:7090" `
+          -PassThru `
+          -RedirectStandardOutput $stdout `
+          -RedirectStandardError $stderr
 
         $ready = $false
 
         for ($i = 0; $i -lt 30; $i++) {
+          if ($process.HasExited) {
+            Write-Host "Application exited with code $($process.ExitCode)"
+            break
+          }
+
+          $client = New-Object System.Net.Sockets.TcpClient
           try {
-            Invoke-WebRequest http://localhost:7090 -UseBasicParsing -TimeoutSec 2 | Out-Null
+            $client.Connect("127.0.0.1", 7090)
             $ready = $true
             break
           }
           catch {
             Start-Sleep -Seconds 2
           }
+          finally {
+            $client.Dispose()
+          }
         }
 
         if (-not $ready) {
-          throw "ASP.NET Core application did not start."
+          Write-Host "----- APPLICATION OUTPUT -----"
+          if (Test-Path $stdout) { Get-Content $stdout }
+          Write-Host "----- APPLICATION ERRORS -----"
+          if (Test-Path $stderr) { Get-Content $stderr }
+          throw "Application failed to start or listen on port 7090."
         }
+
+        Write-Host "Application is listening on port 7090."
 
   - task: DotNetCoreCLI@2
     displayName: 'Run unit tests'
