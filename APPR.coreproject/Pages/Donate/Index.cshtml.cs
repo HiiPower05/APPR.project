@@ -36,8 +36,7 @@ namespace APPR.coreproject.Pages.Donate
                 return Page();
             }
 
-            decimal calculatedAmount =
-    DonationCalculator.CalculateTotal(new[] { Donation.Amount });
+            decimal calculatedAmount = DonationCalculator.CalculateTotal(new[] { Donation.Amount });
 
             Donation.DonationDate = DateTime.Now;
 
