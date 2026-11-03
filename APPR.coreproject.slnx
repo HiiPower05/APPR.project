@@ -1,6 +1,6 @@
 <Solution>
-  <Project Path="GiftOfTheGivers.Helpers/GiftOfTheGivers.Helpers.csproj" />
   <Project Path="APPR.coreproject.Tests/APPR.coreproject.Tests.csproj" Id="d4953f52-5477-49e9-9e61-69c7be48699e" />
   <Project Path="APPR.coreproject/APPR.coreproject.csproj" />
   <Project Path="Functions/Functions.csproj" />
+  <Project Path="GiftOfTheGivers.Helpers/GiftOfTheGivers.Helpers.csproj" />
 </Solution>
