@@ -11,6 +11,8 @@ The project was developed using ASP.NET Core and Bootstrap, with ASP.NET Core Id
 
 </details>
 
+https://appr-coreproject-web-gchdhahmh6e7e0hr.westus3-01.azurewebsites.net/ 
+
 <details>
 <summary><strong>Technologies Used</strong></summary>
 
@@ -220,9 +222,19 @@ Screenshots demonstrating the application's functionality are included below.
 </details>
 
 ### Functions Deployment
+<details>
 <img width="1072" height="823" alt="Screenshot 2026-11-02 223939" src="https://github.com/user-attachments/assets/be3d6736-30f6-49af-8010-75c72a744899" />
 <img width="1443" height="897" alt="Screenshot 2026-11-02 224018" src="https://github.com/user-attachments/assets/45cfa284-4a62-412f-8625-ed6fd7854bbb" />
 <img width="1916" height="817" alt="Screenshot 2026-11-02 223653" src="https://github.com/user-attachments/assets/fb407bf2-f9f1-4430-b249-f8931925b83f" />
+</details>
+
+
+<img width="1915" height="842" alt="Screenshot 2026-11-03 125433" src="https://github.com/user-attachments/assets/192e4ae7-69d2-49fc-8a26-17ead5df5442" />
+
+## Deployment Of Website
+
+<img width="1917" height="1013" alt="Screenshot 2026-11-03 111612" src="https://github.com/user-attachments/assets/78b6f583-3e50-48c5-ba06-0a55a214c405" />
+<img width="1222" height="727" alt="Screenshot 2026-11-03 111434" src="https://github.com/user-attachments/assets/9923793e-9632-4140-8c20-ee634e1de96d" />
 
 
 ### Website
