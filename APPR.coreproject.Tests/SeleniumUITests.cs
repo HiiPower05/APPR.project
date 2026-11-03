@@ -8,7 +8,7 @@ namespace APPR.coreproject.Tests
 {
     public class SeleniumUITests
     {
-        private const string BaseUrl = "http://localhost:7090";
+        private const string BaseUrl = "https://appr-coreproject-web-gchdhahmh6e7e0hr.westus3-01.azurewebsites.net/";
 
         [Fact]
         public void AnonymousDonationTest()
