@@ -8,13 +8,15 @@ namespace APPR.coreproject.Tests
 {
     public class SeleniumUITests
     {
-        private const string BaseUrl = "https://appr-coreproject-web-gchdhahmh6e7e0hr.westus3-01.azurewebsites.net/";
+        private const string BaseUrl = "https://appr-coreproject-web-gchdhahmh6e7e0hr.westus3-01.azurewebsites.net";
 
         [Fact]
         public void AnonymousDonationTest()
         {
             var options = new ChromeOptions();
             options.AddArgument("--ignore-certificate-errors");
+            options.AddArgument("--headless=new");
+            options.AddArgument("--disable-gpu");
 
             using (IWebDriver driver = new ChromeDriver(options))
             {
